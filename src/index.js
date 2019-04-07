@@ -18,7 +18,7 @@ export default (url = null, options = { headers: {} }) => {
       }
 
       if (response.status === 200) {
-        const responseEtag = response.headers.get('Etag')
+        const responseEtag = response.headers.get('Etag') || response.headers.get('etag')
 
         if (responseEtag) {
           data[`${url}${responseEtag}`] = response.clone()
